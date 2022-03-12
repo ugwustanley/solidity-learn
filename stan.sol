@@ -15,7 +15,7 @@ contract stanlee{
          uint256 balance;
     }
 
-    mapping(address => User[]) public users;
+    mapping(address => User) public users;
 
     constructor(uint256 _stan){
        stan = _stan;
@@ -38,11 +38,11 @@ contract stanlee{
 
             User memory _user = User({index: index, name: _name , wallet: _wallet , balance: _tokens});
 
-            users[_wallet].push(_user);
+            users[_wallet] = _user;
         }
     }
 
-    function getAccount(address _wallet) public view returns (User[] memory){
+    function getAccount(address _wallet) public view returns (User memory){
         return users[_wallet];
     }
 
